@@ -37,3 +37,22 @@ ChronosMatch follows a simple order processing workflow:
 The main objective of ChronosMatch is to understand
 how a trading engine manages orders, matches trades,
 and maintains trade records using Python.
+## Core Components
+
+### 1. Order Management
+Handles BUY and SELL orders and validates order details.
+
+### 2. Order Book
+Stores and organizes orders according to price-time priority.
+
+### 3. Matching Engine
+Matches compatible BUY and SELL orders and supports partial execution.
+
+### 4. Database
+Uses SQLite to store executed trade records.
+
+### 5. Performance Module
+Demonstrates memoryview and measures basic order-processing performance.
+
+### 6. Testing
+Uses pytest to check order validation and matching functionality.

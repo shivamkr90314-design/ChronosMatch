@@ -56,3 +56,63 @@ Demonstrates memoryview and measures basic order-processing performance.
 
 ### 6. Testing
 Uses pytest to check order validation and matching functionality.
+ChronosMatch: Zero-Copy High-Frequency Trading Engine
+
+1. Project Introduction
+
+ChronosMatch is a Python-based educational simulation of a high-frequency trading engine. It demonstrates how buy and sell orders can be managed and matched using price-time priority.
+
+The project focuses on order management, trade execution, partial order matching, trade history storage, and basic performance measurement.
+
+2. Core Components
+
+Order Management – "order.py"
+
+- Defines Order and Trade data structures.
+- Stores order details such as ID, side, price, and quantity.
+- Validates order information.
+
+Order Book – "order_book.py"
+
+- Maintains buy and sell orders.
+- Sorts orders based on price and time priority.
+- Provides an order book snapshot.
+
+Matching Engine – "matching_engine.py"
+
+- Matches compatible buy and sell orders.
+- Supports full and partial order execution.
+- Uses price-time priority for matching.
+
+Database – "database.py"
+
+- Uses SQLite to store trade records.
+- Supports saving and retrieving trade history.
+
+Performance Module – "performance.py"
+
+- Demonstrates memoryview usage.
+- Performs basic performance benchmarking.
+
+Test Module – "tests/test_engine.py"
+
+- Tests order validation.
+- Tests matching logic.
+- Checks full and partial order execution.
+- Verifies price-time priority.
+
+3. Technologies Used
+
+- Python
+- SQLite
+- Pytest
+- VS Code
+- Git and GitHub
+
+4. Project Objective
+
+The objective is to understand the basic working principles of a trading engine through order management, matching algorithms, database integration, and testing.
+
+5. Project Status
+
+This project is an educational trading-engine simulation. It is not a production-ready high-frequency trading system.

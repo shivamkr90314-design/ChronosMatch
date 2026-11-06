@@ -116,3 +116,57 @@ The objective is to understand the basic working principles of a trading engine 
 5. Project Status
 
 This project is an educational trading-engine simulation. It is not a production-ready high-frequency trading system.
+## Project Architecture
+
+ChronosMatch is designed using a modular architecture.
+Each module performs a specific responsibility to make
+the trading engine easier to maintain, test, and improve.
+
+### 1. Project Structure
+
+```text
+ChronosMatch/
+├── src/
+│   ├── order.py
+│   ├── order_book.py
+│   ├── matching_engine.py
+│   ├── database.py
+│   └── performance.py
+├── tests/
+│   ├── test_engine.py
+│   └── test_plan.md
+├── main.py
+├── chronosmatch.db
+├── requirements.txt
+├── README.md
+└── .gitignore
+```
+
+### 2. Core Components
+
+- **Order Module:** Creates and validates buy and sell orders.
+- **Order Book Module:** Maintains active buy and sell orders.
+- **Matching Engine:** Matches compatible buy and sell orders.
+- **Database Module:** Handles data storage and retrieval.
+- **Performance Module:** Measures execution time and performance.
+- **Main Application:** Connects the modules and runs the engine.
+- **Testing Module:** Verifies matching logic and expected results.
+
+### 3. Execution Workflow
+
+1. The user submits a buy or sell order.
+2. The Order module validates the order.
+3. The Order Book stores the order.
+4. The Matching Engine checks available opposite orders.
+5. Matching orders generate trade records.
+6. The Database module handles data persistence.
+7. The Performance module measures execution performance.
+
+### 4. Architecture Benefits
+
+- Modular and organized codebase.
+- Easy maintenance and debugging.
+- Reusable components.
+- Improved testing and scalability.
+- Separation of responsibilities.
+

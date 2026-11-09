@@ -59,17 +59,41 @@ class TradeDatabase:
                 f"Failed to save trades: {error}"
             ) from error
 
-    def all_trades(self):
+
+    def all_trades(self, limit=None, newest_first=False):
+        """
+        Retrieve trade history with optional limit and sorting.
+        """
+
+        if limit is not None:
+            if not isinstance(limit, int) or isinstance(limit, bool) or limit <= 0:
+                raise ValueError("Limit must be a positive integer")
+
+        if not isinstance(newest_first, bool):
+            raise ValueError("newest_first must be True or False")
 
         try:
             with closing(sqlite3.connect(self.db_path)) as connection:
                 with connection:
-                    rows = connection.execute("""
+                    query = """
                         SELECT trade_id, buy_order_id, sell_order_id,
                                price, quantity, timestamp
                         FROM trades
-                        ORDER BY timestamp, trade_id
-                    """).fetchall()
+                        ORDER BY timestamp
+                    """
+
+                    if newest_first:
+                        query += " DESC, trade_id DESC"
+                    else:
+                        query += " ASC, trade_id ASC"
+
+                    if limit is not None:
+                        query += " LIMIT ?"
+                        rows = connection.execute(
+                            query, (limit,)
+                        ).fetchall()
+                    else:
+                        rows = connection.execute(query).fetchall()
 
             return [
                 {

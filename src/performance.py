@@ -46,3 +46,26 @@ def benchmark(order_count=1000):
             order_count / elapsed, 2
         ) if elapsed else None
     }
+
+def benchmark_suite():
+    """
+    Run performance benchmarks with different order counts.
+    """
+    order_counts = [100, 1000, 5000]
+
+    results = []
+
+    for count in order_counts:
+        result = benchmark(count)
+        results.append(result)
+
+    print("\nPerformance Benchmark Report")
+    print("-" * 45)
+
+    for result in results:
+        print(f"Orders: {result['orders']}")
+        print(f"Execution Time: {result['elapsed_seconds']} seconds")
+        print(f"Orders/Second: {result['orders_per_second']}")
+        print("-" * 45)
+
+    return results
